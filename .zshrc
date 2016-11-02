@@ -51,7 +51,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git autojump ruby rails rvm)
 
 
 # User configuration
@@ -65,6 +65,10 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export LANG=en_US.UTF-8
 fi
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+LC_CTYPE="zh_CN.UFT-8"
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -87,9 +91,21 @@ export EDITOR='emacs'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias rubymine="sh /usr/share/rubymine/bin/rubymine.sh"
+alias -s java='emacs -nw'
+alias -s rb='emacs -nw'
+alias -s html='emacs -nw'
+alias -s js='emacs -nw'
+alias -s txt='emacs -nw'
+alias -s el='emacs -nw'
+
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+source $HOME/.rvm/scripts/rvm
